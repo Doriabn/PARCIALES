@@ -1,0 +1,47 @@
+------------------------- 
+INSERTAR COMPOSITOR JSON
+------------------------- 
+{
+  "idCompositor": 0,
+  "nameCompositor": "string",
+  "country": "string",
+  "birthDate": "2024-10-01",
+  "deathDate": "2024-10-01"
+}
+------------------
+INSERTAR CANCION
+------------------ 
+{
+  "idCancion": 0,
+  "tituloCancion": "string",
+  "duracionSeg": 0,
+  "fechaLanzamiento": "2024-10-01",
+  "genero": "string",
+  "compositor": {
+    "idCompositor": 0,
+    "nameCompositor": "string",
+    "country": "string",
+    "birthDate": "2024-10-01",
+    "deathDate": "2024-10-01"
+  }
+}
+
+-------------------
+INGRESAR con JSON  |
+-------------------
+{
+    "username":"(AQUI COLOCA EL USERNAME QUE LE DISTE EN EL POSTGRES)",
+    "password":"1234"
+}
+
+
+-----------
+QUERY HU4 |
+-----------
+SELECT compositor.name_compositor AS nombre, 
+COUNT(cancion.titulo_cancion) AS cantidad_canciones_rock
+FROM compositor
+INNER JOIN cancion 
+ON compositor.id_compositor = cancion.id_compositor
+WHERE cancion.genero = 'Rock'
+GROUP BY compositor.name_compositor

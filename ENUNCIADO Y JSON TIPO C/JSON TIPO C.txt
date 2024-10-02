@@ -1,0 +1,36 @@
+QUERY DE HU4 
+--------------
+SELECT t.id_ticket,i.nombre,0.3 * SQRT(t.cuota) AS devolucion 
+FROM ticket t 
+JOIN integrante i  
+ON t.id_integrante = i.id_integrante 
+
+------------------------
+LOGIN DE JSON EN POSTMAN
+------------------------- 
+{ 
+
+"username":"(AQUI COLOCA EL USERNAME QUE LE DISTE EN EL POSTGRES)",
+ "password":"1234"
+} 
+--------------------------------------------
+|INSERTAR CON EL ROL DE ADMIN UN INTEGRANTE|
+--------------------------------------------
+{ 
+"idIntegrante": 0, 
+"nombre": "PEPITO LLORETAS", 
+"dni": "896523", 
+"email": "pl@gmail.com", 
+"fechaNacimiento": "2000-02-02" 
+} 
+------------------------------------
+INSERTAR TICKET CON EL ROL DE JEFE |
+------------------------------------
+{ 
+"idTicket": 0, 
+"fechaEmision": "2024-08-26", 
+"cuota": 150, 
+"integrante": { 
+"idIntegrante": 3 
+}
+}
