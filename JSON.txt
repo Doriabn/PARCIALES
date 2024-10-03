@@ -1,0 +1,44 @@
+--------------
+INSERTAR DEPARTAMENTO JSON
+-------------------
+{
+  "idDepartamento": 0,
+  "descripcion": "Escuadron Lince",
+  "autoridad": "Policias",
+  "nroOficiales": 10,
+  "operativo": true
+}
+
+--------------------
+INSERTAR INCIDENTE
+----------------------
+{
+  "idIncidente": 0,
+  "detalle": "string",
+  "fechaOcurrencia": "2024-10-03",
+  "perdidaEconomica": 0,
+  "departamento": {
+    "idDepartamento": 0,
+    "descripcion": "string",
+    "autoridad": "string",
+    "nroOficiales": 0,
+    "operativo": true
+  }
+}
+
+------------
+HU4 QUERY
+-----------
+select d.descripcion as departamento,i.fecha_ocurrencia, count(i.id_incidente) as cantidad_incidentes
+from departamento d
+inner join incidente i
+on d.id_departamento=i.id_departamento
+where i.fecha_ocurrencia='2024-10-03'
+group by d.descripcion,i.fecha_ocurrencia
+
+
+
+CONTRASEÑA DE COMISARIO
+123
+CONTRASEÑA DE SUBALTERNO
+1234
